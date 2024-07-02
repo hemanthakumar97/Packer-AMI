@@ -1,0 +1,14 @@
+flowchart TD
+    A[Build an AMI
+    with all dependencies
+    using packer] -->|Use the AMI with tearrform| B(Launch ec2-instance 
+    with user-data.sh script 
+    using terraform)
+    B --> |Launch ec2|C{user-data.sh}
+    C -->|Configure| D[datadog-agent]
+    C -->|Triger| E{Jeknis job}
+    C -->|Install| F[Twistlock agent]
+    E --> |Deploy| G[app-a]
+    E --> |Deploy| I[app-b]
+
+https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNptUbFOwzAQ_ZWTJ5AaBsYMSG1TUBFMlCnpcHUuiYljR2dbVRX330kaIYKEJ_veu_ee7wYhbUkiFZW2Z9kgezhkhYHxrPNNULoENLB-38-1s_INoNZQUk-mJCMVuRkKTpkaepQt8RGS5Cl-OgLf0NQ9N3pC5spyF2Fz94bByAZIPibKOI9GEixMgiNOSvT44BpwklXvYWnkiRknrfu5upksIf6qxu2w1LjOtO0t2daaStWBKUKWT4TS1gnWZPxxSTuwqokj7IZXao1y8GVPf3T2U3CtIzznh7NyXlvZwlJnN6fKqNf2EuElx75P8H9wfwNPR7ESHXGHqhzXMkzUQoxj7KgQ6XgtkdtCFOY68jB4-3ExUqSeA60E21A3P4_Qjz-jTGHN2Im0Qu3o-g3Fi6P6
